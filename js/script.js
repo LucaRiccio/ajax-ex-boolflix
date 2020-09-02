@@ -16,13 +16,17 @@ $(document).ready(function(){
         success: function(risposta){
           //console.log(risposta.results);
           for (var i = 0; i < risposta.results.length; i++){
-            console.log(risposta.results[i]);
-            var film = { // Oggetto che rappresenterà poi il mio context per Handlebars
+            //console.log(risposta.results[i]);
+            var film = { // Oggetto che rappresenterà poi il mio context per Handlebars.
               title: risposta.results[i].title,
               original_title: risposta.results[i].original_title,
               language: risposta.results[i].language,
               vote_average: risposta.results[i].vote_average
             };
+            var source = $(".entry-template").html();
+            var template = Handlebars.compile(source);
+            var html = template(film);
+            $(".stampa").append(html);
           }
         },
         error: function(){
@@ -35,13 +39,9 @@ $(document).ready(function(){
 
 
 
-  // var source = document.getElementById("entry-template").innerHTML;
-  // var template = Handlebars.compile(source);
-  //
-  //
-  //
-  // var context = { title: "My New Post", body: "This is my first post!" };
-  // var html = template(context);
+
+
+
 
 
 

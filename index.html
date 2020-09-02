@@ -13,13 +13,17 @@
     <input id="ricerca" type="text" name="" value="">
     <button id="bottone-ricerca" type="button" name="button">Search</button>
 
+    <div class="stampa">
+
+    </div>
+
     <!-- Template Handlebars -->
     <script id="entry-template" type="text/x-handlebars-template">
-      <div class="entry">
-        <h2>{{title}}</h2>
-        <div class="body">
-          {{body}}
-        </div>
+      <div class="locandina">
+        <li>{{title}}</li>
+        <li>{{original_title}}</li>
+        <li>{{language}}</li>
+        <li>{{vote_average}}</li>
       </div>
     </script>
 
