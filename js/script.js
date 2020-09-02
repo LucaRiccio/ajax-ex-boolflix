@@ -20,10 +20,10 @@ $(document).ready(function(){
             var film = { // Oggetto che rappresenterà poi il mio context per Handlebars.
               title: risposta.results[i].title,
               original_title: risposta.results[i].original_title,
-              language: risposta.results[i].language,
+              language: risposta.results[i].original_language,
               vote_average: risposta.results[i].vote_average
             };
-            var source = $(".entry-template").html();
+            var source = $("#entry-template").html();
             var template = Handlebars.compile(source);
             var html = template(film);
             $(".stampa").append(html);
