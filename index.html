@@ -10,7 +10,18 @@
   </head>
   <body>
 
-    
+    <input id="ricerca" type="text" name="" value="">
+    <button id="bottone-ricerca" type="button" name="button">Search</button>
+
+    <!-- Template Handlebars -->
+    <script id="entry-template" type="text/x-handlebars-template">
+      <div class="entry">
+        <h2>{{title}}</h2>
+        <div class="body">
+          {{body}}
+        </div>
+      </div>
+    </script>
 
     <script src="js/script.js" charset="utf-8"></script>
   </body>
