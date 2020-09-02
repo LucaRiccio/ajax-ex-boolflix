@@ -1,8 +1,10 @@
 $(document).ready(function(){
 
   $("#bottone-ricerca").click(function(){ // Al click del bottone..
+
     var ricerca = $("#ricerca").val(); // Salvo in una variabile il valore nel campo input.
-    //console.log(ricerca);
+
+    $(".locandina").remove(); // Rimuovo quanto appeso da HB, altrimenti resterebbero appesi i risultati di ogni ricerca.
 
     $.ajax( //Chiamata AJAX
       {
@@ -14,9 +16,7 @@ $(document).ready(function(){
         language:"it-IT"
         },
         success: function(risposta){
-          //console.log(risposta.results);
-          for (var i = 0; i < risposta.results.length; i++){
-            //console.log(risposta.results[i]);
+          for (var i = 0; i < risposta.results.length; i++){ // Ciclo for per attraversare "results"
             var film = { // Oggetto che rappresenterà poi il mio context per Handlebars.
               title: risposta.results[i].title,
               original_title: risposta.results[i].original_title,
