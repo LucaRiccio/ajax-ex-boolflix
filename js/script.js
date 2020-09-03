@@ -81,7 +81,7 @@ function printFilm(data){
       title: data.results[i].title,
       original_title: data.results[i].original_title,
       language: data.results[i].original_language,
-      vote_average: data.results[i].vote_average
+      vote_average: stars(data.results[i].vote_average) // Richiamata funzione per voto/stella
     };
     var html = template(film);
     $(".stampa").append(html);
@@ -97,7 +97,7 @@ function printSerie(data){
       title: data.results[i].name,
       original_title: data.results[i].original_name,
       language: data.results[i].original_language,
-      vote_average: data.results[i].vote_average
+      vote_average: stars(data.results[i].vote_average) // Richiamata funzione per voto/stella
     };
     var html = template(serie);
     $(".stampa").append(html);
@@ -116,6 +116,21 @@ function noResult(){
   var html = template(context);
   $(".stampa").append(html);
 }
+
+function stars(voto){
+  var somma = ""; // Inizzializzo una var somma con stringa vuota;
+  var voto = Math.ceil(voto/2); // divido per due ed arrotondo per eccesso.
+  for (var i = 1; i <= 5; i++){ // Ciclo for per far stampare le stelle (dovranno essere sempre 5).
+    if (i <= voto){ // se la i è minore o uguale al voto
+      var stella = '<i class="fas fa-star"></i>'; // la var stella avrà icona stella piena
+    } else { // altrimenti la var stella avrà icona stella vuota
+      var stella = '<i class="far fa-star"></i>';
+    }
+    somma += stella; // Ad ogni ciclo sommo la var stella
+  }
+  return somma; // return della funzione
+}
+
 
 //function flags(lingua){
 //1 it e en
