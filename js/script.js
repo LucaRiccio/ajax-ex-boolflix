@@ -128,11 +128,10 @@ function printSerie(data){
       original_title: data.results[i].original_name,
       language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average), // Richiamata funzione per voto/stella
-      poster_path: data.results[i].poster_path
+      poster_path: (data.results[i].poster_path)
     };
     var html = template(serie);
     $(".stampa").append(html);
-    console.log(data.results.length);
   }
 }
 
