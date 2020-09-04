@@ -80,7 +80,7 @@ function printFilm(data){
     var film = { // Oggetto che rappresenterà poi il mio context per Handlebars.
       title: data.results[i].title,
       original_title: data.results[i].original_title,
-      language: data.results[i].original_language,
+      language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average) // Richiamata funzione per voto/stella
     };
     var html = template(film);
@@ -96,7 +96,7 @@ function printSerie(data){
     var serie = { // Oggetto che rappresenterà poi il mio context per Handlebars.
       title: data.results[i].name,
       original_title: data.results[i].original_name,
-      language: data.results[i].original_language,
+      language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average) // Richiamata funzione per voto/stella
     };
     var html = template(serie);
@@ -118,8 +118,9 @@ function noResult(){
 }
 
 function stars(voto){
+  var voto = Math.ceil(voto/2); // divido per due ed arrotondo per eccesso. //potrei non riscrivere var, è già nell'argomento.
   var somma = ""; // Inizzializzo una var somma con stringa vuota;
-  var voto = Math.ceil(voto/2); // divido per due ed arrotondo per eccesso.
+
   for (var i = 1; i <= 5; i++){ // Ciclo for per far stampare le stelle (dovranno essere sempre 5).
     if (i <= voto){ // se la i è minore o uguale al voto
       var stella = '<i class="fas fa-star"></i>'; // la var stella avrà icona stella piena
@@ -132,21 +133,15 @@ function stars(voto){
 }
 
 
-//function flags(lingua){
-//1 it e en
-// per queste due lingue visualizzare la bandiera esatta e ritornarla
-// altrimenti ritornare la stessa lingua
-//}
+// Funzione bandiere
+function flag(lingua){
+  var language = ['en','it']; // Creo un array contentente le lingue che voglio gestire.
+  if (language.includes(lingua)){ // Se l'array language include l'argomento...
+    return '<img src="img/' + lingua +'.png" class="flag">'; // posso farlo perchè ho una cartella con i file già rinominati a mio piacimento.
+  }
+}
 
-//function stars(voto){
-//1 dividere num per 2
-//2 arrotondare per eccesso
-//3 ciclo for per aggiungere le stelle (da 1 a 5)
-//4 istruzioni condizionali
-//}
 
-// <i class="fas fa-star"></i> // FULL
-// <i class="far fa-star"></i> // EMPTY
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
 
