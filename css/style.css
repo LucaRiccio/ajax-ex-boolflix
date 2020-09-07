@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: gray;
 }
 
 header {
@@ -10,21 +11,24 @@ header {
   justify-content: flex-start;
   align-items: center;
   height: 80px;
-  width: 100vw;
+  width: 100%;
   background-color: black;
   color: red;
 }
 
 main {
   height: calc(100% - 70px);
-  width: 100vw;
-  min-height: 600px;
+  width: 100%;
+  /* min-height: 600px; */
   background-color: grey;
+  position: relative;
 
 }
 
 .stampa {
-
+  position: absolute;
+  text-align: center;
+  background-color: gray;
 }
 
 .locandina {

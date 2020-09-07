@@ -42,6 +42,7 @@ $(document).ready(function(){
 
 // **FUNZIONI**
 
+
 //Funzione per resettare il campo.
 function reset(){
   $(".stampa").empty();
@@ -111,7 +112,8 @@ function printFilm(data){
       original_title: data.results[i].original_title,
       language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average), // Richiamata funzione per voto/stella
-      poster_path: data.results[i].poster_path  // Aggiunta chiave per visualizzazione copertina.
+      poster_path: data.results[i].poster_path,  // Aggiunta chiave per visualizzazione copertina.
+      overview: data.results[i].overview.substring(0,100)+'[...]'
     };
     var html = template(film);
     $(".stampa").append(html);
@@ -128,7 +130,8 @@ function printSerie(data){
       original_title: data.results[i].original_name,
       language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average), // Richiamata funzione per voto/stella
-      poster_path: (data.results[i].poster_path)
+      poster_path: data.results[i].poster_path,
+      overview: data.results[i].overview.substring(0,200)+'[...]'
     };
     var html = template(serie);
     $(".stampa").append(html);
@@ -170,6 +173,15 @@ function flag(lingua){
     return '<img src="img/' + lingua +'.png" class="flag">'; // posso farlo perchè ho una cartella con i file già rinominati a mio piacimento.
   }
 }
+
+// function immagine(url){
+//   if (url == "") {
+//     return 'https://www.associazioneostetriche.it/wp-content/uploads/2018/05/immagine-non-disponibile.png';
+//   } else {
+//     return url
+//   }
+//
+// }
 
 
 
