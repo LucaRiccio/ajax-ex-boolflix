@@ -13,9 +13,13 @@
 
     <header>
       <h1>BOOLFLIX</h1>
-      <input id="ricerca" type="text" name="" value="">
-      <button id="bottone-ricerca" type="button" name="button">Search</button>
+      <div class="find">
+        <input id="ricerca" type="text" name="" value="">
+        <button id="bottone-ricerca" type="button" name="button">Search</button>
+      </div>
     </header>
+
+
 
   <main>
     <div class="stampa">
@@ -30,12 +34,14 @@
     <!-- Template Handlebars -->
     <script id="entry-template" type="text/x-handlebars-template">
       <div class="locandina">
-        <h3>{{title}}</h3>
-        <p> Titolo originale: {{original_title}}</p>
-        <p>Lingua: {{{language}}}</p>
-        <p>Voto: {{{vote_average}}}</p>
+        <div class="contenuto">
+          <h3>{{title}}</h3>
+          <p> Titolo originale: {{original_title}}</p>
+          <p>Lingua: {{{language}}}</p>
+          <p>Voto: {{{vote_average}}}</p>
+          <p>{{overview}}</p>
+        </div>
         <img src="{{poster_path}}" alt="">
-        <!-- <p>{{overview}}</p> -->
       </div>
     </script>
 

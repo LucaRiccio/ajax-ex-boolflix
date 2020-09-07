@@ -109,9 +109,9 @@ function printFilm(data){
   for (var i = 0; i < data.results.length; i++){ // Ciclo for per attraversare "results"
 
     if (data.results[i].poster_path){
-      var poster = 'https://image.tmdb.org/t/p/w185/'+ data.results[i].poster_path;
+      var poster = 'https://image.tmdb.org/t/p/w342/'+ data.results[i].poster_path;
     } else {
-      var poster = 'https://www.associazioneostetriche.it/wp-content/uploads/2018/05/immagine-non-disponibile.png';
+      var poster = 'https://windowsinsiders.com/wp-content/uploads/2016/07/netflix-surface-phone-italia.png';
     }
 
     var film = { // Oggetto che rappresenterà poi il mio context per Handlebars.
@@ -120,7 +120,7 @@ function printFilm(data){
       language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average), // Richiamata funzione per voto/stella
       poster_path: poster,
-      overview: data.results[i].overview.substring(0,100)+'...'
+      overview: data.results[i].overview.substring(0,200)+'...'
     };
     var html = template(film);
     $(".stampa").append(html);
@@ -136,7 +136,7 @@ function printSerie(data){
     if (data.results[i].poster_path){
       var poster = 'https://image.tmdb.org/t/p/w185/'+ data.results[i].poster_path;
     } else {
-      var poster = 'https://www.associazioneostetriche.it/wp-content/uploads/2018/05/immagine-non-disponibile.png';
+      var poster = 'https://windowsinsiders.com/wp-content/uploads/2016/07/netflix-surface-phone-italia.png';
     }
 
     var serie = { // Oggetto che rappresenterà poi il mio context per Handlebars.
