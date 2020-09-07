@@ -107,13 +107,20 @@ function printFilm(data){
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
   for (var i = 0; i < data.results.length; i++){ // Ciclo for per attraversare "results"
+
+    if (data.results[i].poster_path){
+      var poster = 'https://image.tmdb.org/t/p/w185/'+ data.results[i].poster_path;
+    } else {
+      var poster = 'https://www.associazioneostetriche.it/wp-content/uploads/2018/05/immagine-non-disponibile.png';
+    }
+
     var film = { // Oggetto che rappresenterà poi il mio context per Handlebars.
       title: data.results[i].title,
       original_title: data.results[i].original_title,
       language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average), // Richiamata funzione per voto/stella
-      poster_path: data.results[i].poster_path,  // Aggiunta chiave per visualizzazione copertina.
-      overview: data.results[i].overview.substring(0,100)+'[...]'
+      poster_path: poster,
+      overview: data.results[i].overview.substring(0,100)+'...'
     };
     var html = template(film);
     $(".stampa").append(html);
@@ -125,13 +132,20 @@ function printSerie(data){
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
   for (var i = 0; i < data.results.length; i++){ // Ciclo for per attraversare "results"
+
+    if (data.results[i].poster_path){
+      var poster = 'https://image.tmdb.org/t/p/w185/'+ data.results[i].poster_path;
+    } else {
+      var poster = 'https://www.associazioneostetriche.it/wp-content/uploads/2018/05/immagine-non-disponibile.png';
+    }
+
     var serie = { // Oggetto che rappresenterà poi il mio context per Handlebars.
       title: data.results[i].name,
       original_title: data.results[i].original_name,
       language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average), // Richiamata funzione per voto/stella
-      poster_path: data.results[i].poster_path,
-      overview: data.results[i].overview.substring(0,200)+'[...]'
+      poster_path: poster,
+      overview: data.results[i].overview.substring(0,200)+'...'
     };
     var html = template(serie);
     $(".stampa").append(html);
@@ -170,18 +184,9 @@ function stars(voto){
 function flag(lingua){
   var language = ['en','it']; // Creo un array contentente le lingue che voglio gestire.
   if (language.includes(lingua)){ // Se l'array language include l'argomento...
-    return '<img src="img/' + lingua +'.png" class="flag">'; // posso farlo perchè ho una cartella con i file già rinominati a mio piacimento.
+    return '<img src="img/' + lingua +'.png" id="flag">'; // posso farlo perchè ho una cartella con i file già rinominati a mio piacimento.
   }
 }
-
-// function immagine(url){
-//   if (url == "") {
-//     return 'https://www.associazioneostetriche.it/wp-content/uploads/2018/05/immagine-non-disponibile.png';
-//   } else {
-//     return url
-//   }
-//
-// }
 
 
 

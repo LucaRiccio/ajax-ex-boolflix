@@ -36,10 +36,13 @@ main {
   width: 20%;
 }
 
+.locandina img {
+  width: 185px;
+  height: 278px;
+}
 
 
-
-.flag {
+#flag {
   width: 30px;
   height: 20px;
 }
