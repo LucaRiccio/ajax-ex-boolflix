@@ -134,7 +134,7 @@ function printSerie(data){
   for (var i = 0; i < data.results.length; i++){ // Ciclo for per attraversare "results"
 
     if (data.results[i].poster_path){
-      var poster = 'https://image.tmdb.org/t/p/w185/'+ data.results[i].poster_path;
+      var poster = 'https://image.tmdb.org/t/p/w342/'+ data.results[i].poster_path;
     } else {
       var poster = 'https://windowsinsiders.com/wp-content/uploads/2016/07/netflix-surface-phone-italia.png';
     }
