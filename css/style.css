@@ -101,12 +101,17 @@ main {
 }
 
 .contenuto:hover {
-  opacity: 1;
+  opacity: 0.9;
   color: white;
+}
+
+.overview {
+  text-align: justify;
+  padding: 5px;
 
 }
 
-.fas .fa-star {
+.fas.fa-star {
   color: gold;
 }
 

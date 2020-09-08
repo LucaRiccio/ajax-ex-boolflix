@@ -29,6 +29,16 @@
 
 $(document).ready(function(){
 
+
+  $(document).keydown(function(){
+    var ricerca = $("#ricerca").val();
+    if (event.which == 13 || event.keyCode == 13){
+      reset();
+      insertFilm(ricerca);
+      insertSerie(ricerca);
+    }
+  });
+
   $("#bottone-ricerca").click(function(){ // Al click del bottone..
 
     var ricerca = $("#ricerca").val(); // Salvo in una variabile il valore nel campo input.
@@ -124,7 +134,7 @@ function printFilm(data){
       language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average), // Richiamata funzione per voto/stella
       poster_path: poster,
-      overview: data.results[i].overview.substring(0,300)+'...'
+      overview: data.results[i].overview.substring(0,400)+'...'
     };
     var html = template(film);
     $(".stampa").append(html);
@@ -149,7 +159,7 @@ function printSerie(data){
       language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average), // Richiamata funzione per voto/stella
       poster_path: poster,
-      overview: data.results[i].overview.substring(0,300)+'...'
+      overview: data.results[i].overview.substring(0,400)+'...'
     };
     var html = template(serie);
     $(".stampa").append(html);
@@ -162,7 +172,7 @@ function noResult(){
   var source = $("#no-result-template").html();
   var template = Handlebars.compile(source);
   var context = {
-    noResult: "Non ci sono risultati"
+    noResult: "Non ci sono risultati nella categoria"
   };
   var html = template(context);
   $(".stampa").append(html);
