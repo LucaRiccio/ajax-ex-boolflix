@@ -27,9 +27,19 @@
 // Esempio di URL che torna la copertina di BORIS:
 // https://image.tmdb.org/t/p/w185/s2VDcsMh9ZhjFUxw77uCFDpTuXp.jpg
 
+// MILESTONE 4:
+// Trasformiamo quello che abbiamo fatto fino ad ora in una vera e propria webapp,
+// creando un layout completo simil-Netflix:
+// ● Un header che contiene logo e search bar
+// ● Dopo aver ricercato qualcosa nella searchbar, i risultati appaiono sotto forma
+// di “card” in cui lo sfondo è rappresentato dall’immagine di copertina (consiglio
+// la poster_path con w342)
+// ● Andando con il mouse sopra una card (on hover), appaiono le informazioni
+// aggiuntive già prese nei punti precedenti più la overview
+
 $(document).ready(function(){
 
-
+  // Funzione di Keydown, la ricerca si avvia alla pressione del tasto enter.
   $(document).keydown(function(){
     var ricerca = $("#ricerca").val();
     if (event.which == 13 || event.keyCode == 13){
@@ -49,7 +59,6 @@ $(document).ready(function(){
   });
 
 });
-
 
 
 
@@ -202,50 +211,3 @@ function flag(lingua){
     return '<img src="img/' + lingua +'.png" id="flag">'; // posso farlo perchè ho una cartella con i file già rinominati a mio piacimento.
   }
 }
-
-
-
-//-----------------------------------------------------------------------------------------------------------------------------------------
-
-// Vecchia soluzione senza funzioni
-
-// $(document).ready(function(){
-//
-//   $("#bottone-ricerca").click(function(){ // Al click del bottone..
-//
-//     var ricerca = $("#ricerca").val(); // Salvo in una variabile il valore nel campo input.
-//     $("#ricerca").val(" "); // Pulisco il campo di ricerca
-//
-//     $(".locandina").remove(); // Rimuovo quanto appeso da HB, altrimenti resterebbero appesi i risultati di ogni ricerca.
-//
-//     $.ajax( //Chiamata AJAX
-//       {
-//         url: "https://api.themoviedb.org/3/search/movie", // URL API
-//         method: "GET",
-//         data:{
-//         api_key:"45dccc48871c1e02af14477d08b6af41", // APIkey.
-//         query: ricerca, // Passo la variabile in cui ho salvato il valore del campo input.
-//         language:"it-IT"
-//         },
-//         success: function(risposta){
-//           for (var i = 0; i < risposta.results.length; i++){ // Ciclo for per attraversare "results"
-//             var film = { // Oggetto che rappresenterà poi il mio context per Handlebars.
-//               title: risposta.results[i].title,
-//               original_title: risposta.results[i].original_title,
-//               language: risposta.results[i].original_language,
-//               vote_average: risposta.results[i].vote_average
-//             };
-//             var source = $("#entry-template").html();
-//             var template = Handlebars.compile(source);
-//             var html = template(film);
-//             $(".stampa").append(html);
-//           }
-//         },
-//         error: function(){
-//           alert("È avvenuto un errore; Inserisci un valore");
-//        }
-//       }
-//     );
-//   });
-//
-// });
