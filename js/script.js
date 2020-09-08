@@ -40,6 +40,10 @@ $(document).ready(function(){
 
 });
 
+
+
+
+
 // **FUNZIONI**
 
 
@@ -120,7 +124,7 @@ function printFilm(data){
       language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average), // Richiamata funzione per voto/stella
       poster_path: poster,
-      overview: data.results[i].overview.substring(0,200)+'...'
+      overview: data.results[i].overview.substring(0,300)+'...'
     };
     var html = template(film);
     $(".stampa").append(html);
@@ -145,7 +149,7 @@ function printSerie(data){
       language: flag(data.results[i].original_language),
       vote_average: stars(data.results[i].vote_average), // Richiamata funzione per voto/stella
       poster_path: poster,
-      overview: data.results[i].overview.substring(0,200)+'...'
+      overview: data.results[i].overview.substring(0,300)+'...'
     };
     var html = template(serie);
     $(".stampa").append(html);
@@ -164,6 +168,7 @@ function noResult(){
   $(".stampa").append(html);
 }
 
+// Funzione ranking
 function stars(voto){
   var voto = Math.ceil(voto/2); // divido per due ed arrotondo per eccesso. //potrei non riscrivere var, è già nell'argomento.
   var somma = ""; // Inizzializzo una var somma con stringa vuota;

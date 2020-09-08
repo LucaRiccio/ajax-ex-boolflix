@@ -22,9 +22,9 @@ h1 {
 }
 
 .navigation {
-  padding-right: 400px;
+  padding-right: 200px;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .navigation li {
@@ -71,9 +71,8 @@ main {
 }
 
 .stampa {
-  /* text-align: center; */
+  text-align: center;
   background-color: #181818;
-
 }
 
 .locandina {
@@ -81,7 +80,6 @@ main {
   position: relative;
   /* width: 20%; */
   margin: 15px;
-
 }
 
 .locandina img {
@@ -106,6 +104,10 @@ main {
   opacity: 1;
   color: white;
 
+}
+
+.fas .fa-star {
+  color: gold;
 }
 
 #flag {
